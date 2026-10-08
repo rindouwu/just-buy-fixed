@@ -37,11 +37,11 @@ export const useCartStore = defineStore('cart', () => {
     )
   })
   const addToCart = async (product_id) => {
-    const response = await cart.addProductToCart(product_id)
+    await cart.addProductToCart(product_id)
     await loadCart()
   }
   const deleteFromCart = async (id) => {
-    const response = await cart.deleteProductFromCart(id)
+    await cart.deleteProductFromCart(id)
     await loadCart()
   }
   const deleteProductFromCart = async (product_id) => {
