@@ -3,7 +3,7 @@ import { useOrderStore } from "@/stores/order.js";
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import EmptyState from "@/components/EmptyState.vue";
-import Skeleton from "@/components/Skeleton.vue";
+import BaseSkeleton from "@/components/BaseSkeleton.vue";
 import OrderCard from "@/components/OrderCard.vue";
 
 const orderStore = useOrderStore();
@@ -24,7 +24,7 @@ onMounted(() => {
     </RouterLink>
     <h1 class="mb-8 text-3xl sm:text-4xl">Оформленные заказы</h1>
     <div v-if="loading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 pt-5 animate-pulse">
-      <Skeleton v-for="n in 6" :key="n"/>
+      <BaseSkeleton v-for="n in 6" :key="n"/>
     </div>
     <div v-else-if="error">
       <p class="text-red-400">{{ errorMessage }}</p>

@@ -5,7 +5,7 @@
   import { useAuthStore } from "@/stores/auth.js";
   import { storeToRefs } from "pinia";
   import ProductCard from "@/components/ProductCard.vue"
-  import Skeleton from "@/components/Skeleton.vue"
+  import BaseSkeleton from "@/components/BaseSkeleton.vue"
   import EmptyState from "@/components/EmptyState.vue"
   import ErrorState from "@/components/ErrorState.vue"
 
@@ -44,7 +44,7 @@
     <h1 class="mb-8 text-3xl sm:text-4xl pt-5">Каталог товаров</h1>
     <div v-if="loading">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 pt-5 animate-pulse">
-        <Skeleton
+        <BaseSkeleton
           v-for="n in 8" :key="n"
         />
       </div>
