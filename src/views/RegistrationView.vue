@@ -3,6 +3,8 @@ import {ref, reactive, computed} from 'vue';
 import { useRouter } from 'vue-router';
 import useAuth from "@/services/auth.js";
 import { useToastStore } from "@/stores/toast.js"
+import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue"
 
 const form = reactive({
   fio: "",
@@ -101,68 +103,44 @@ const handleSubmit = async () => {
       class="flex flex-col w-full max-w-md rounded-xl bg-zinc-900 p-6 sm:p-8"
       @submit.prevent="handleSubmit"
     >
-      <label for="reg-surname" class="font-medium text-zinc-300">Фамилия</label>
-      <input
+      <BaseInput
         id="reg-surname"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="surnameError
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Фамилия"
         v-model="surname"
-        type="text"
         placeholder="Фамилия"
-      >
-      <p class="text-red-400 text-sm mt-1" v-if="surnameError">{{ surnameError }}</p>
-      <label for="reg-name" class="font-medium text-zinc-300">Имя</label>
-      <input
+        :error="surnameError"
+      />
+      <BaseInput
         id="reg-name"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="nameError
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Имя"
         v-model="name"
-        type="text"
         placeholder="Имя"
-      >
-      <p class="text-red-400 text-sm mt-1" v-if="nameError">{{ nameError }}</p>
-      <label for="reg-patronymic" class="font-medium text-zinc-300">Отчество</label>
-      <input
+        :error="nameError"
+      />
+      <BaseInput
         id="reg-patronymic"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="patronymicError
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Отчество"
         v-model="patronymic"
-        type="text"
         placeholder="Отчество"
-      >
-      <p class="text-red-400 text-sm mt-1" v-if="patronymicError">{{ patronymicError }}</p>
-      <label for="reg-email" class="font-medium text-zinc-300">Ваша почта</label>
-      <input
+        :error="patronymicError"
+      />
+      <BaseInput
         id="reg-email"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="emailError
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Почта"
         v-model="form.email"
         type="email"
         placeholder="example@mail.com"
-      >
-      <p class="text-red-400 text-sm" v-if="emailError">{{ emailError }}</p>
-      <label for="reg-password" class="font-medium text-zinc-300">Пароль</label>
-      <input
+        :error="emailError"
+      />
+      <BaseInput
         id="reg-password"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="passwordError
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Пароль"
         v-model="form.password"
         type="password"
-        placeholder="password"
-      >
-      <p class="text-red-400 text-sm" v-if="passwordError">{{ passwordError }}</p>
+        placeholder="Пароль"
+        :error="passwordError"
+      />
       <p class="text-red-400 text-sm" v-if="errorMessage">{{ errorMessage }}</p>
-
       <BaseButton
         class="mt-8 px-6 py-2"
         type="submit"
@@ -170,7 +148,6 @@ const handleSubmit = async () => {
       >
         {{ isSubmitting ? 'Регистрация...' : 'Зарегистрироваться' }}
       </BaseButton>
-
       <RouterLink
         to="/"
         class="mt-4 self-center text-sm text-zinc-400 hover:text-zinc-200 transition-colors duration-200"
