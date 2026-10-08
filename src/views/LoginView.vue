@@ -5,6 +5,7 @@ import { useAuthStore } from "@/stores/auth.js"
 import authService from "@/services/auth.js"
 import { useToastStore } from "@/stores/toast.js"
 import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue";
 
 const form = reactive({
   email: "",
@@ -49,30 +50,22 @@ const handleSubmit = async () => {
       class="flex flex-col w-full max-w-md rounded-xl bg-zinc-900 p-6 sm:p-8"
       @submit.prevent="handleSubmit"
     >
-      <label for="login-email" class="font-medium text-zinc-300">Email</label>
-      <input
+      <BaseInput
         id="login-email"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="errorMessage
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Почта"
         v-model="form.email"
         type="email"
         placeholder="example@mail.com"
-      >
-      <label for="login-password" class="font-medium text-zinc-300">Password</label>
-      <input
+        :error="errorMessage"
+        />
+      <BaseInput
         id="login-password"
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
-        :class="errorMessage
-          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
+        label="Пароль"
         v-model="form.password"
         type="password"
-        placeholder="password"
-      >
-      <p class="text-red-400 text-sm" v-if="errorMessage">{{ errorMessage }}</p>
-
+        placeholder="Пароль"
+        :error="errorMessage"
+      />
       <BaseButton
         class="mt-8 px-6 py-2"
         type="submit"
@@ -80,7 +73,6 @@ const handleSubmit = async () => {
       >
         {{ isSubmitting ? 'Вход...' : 'Войти' }}
       </BaseButton>
-
       <RouterLink
         to="/"
         class="mt-4 self-center text-sm text-zinc-400 hover:text-zinc-200 transition-colors duration-200"
