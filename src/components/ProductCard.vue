@@ -31,7 +31,7 @@ const addToCart = async (product_id) => {
   }
 }
 
-const image_base_url = "http://lifestealer86.ru/";
+const image_base_url = import.meta.env.VITE_IMAGE_BASE_URL;
 </script>
 
 <template>

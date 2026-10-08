@@ -12,7 +12,7 @@ const toastStore = useToastStore();
 
 const router = useRouter();
 
-const image_base_url = "http://lifestealer86.ru/"
+const image_base_url = import.meta.env.VITE_IMAGE_BASE_URL
 
 const closeCart = () => {
   router.push('/')
