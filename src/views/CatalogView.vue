@@ -40,10 +40,10 @@
 </script>
 
 <template>
-  <section class="max-w-7xl mx-auto text-zinc-100 min-h-screen">
-    <h1 class="mb-8 text-4xl pt-5">Каталог товаров</h1>
+  <section class="max-w-7xl mx-auto text-zinc-100 min-h-screen px-4 sm:px-6 lg:px-8">
+    <h1 class="mb-8 text-3xl sm:text-4xl pt-5">Каталог товаров</h1>
     <div v-if="loading">
-      <div class="grid grid-cols-4 gap-8 pt-5 animate-pulse">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 pt-5 animate-pulse">
         <Skeleton
           v-for="n in 8" :key="n"
         />
@@ -58,8 +58,8 @@
     <div v-else-if="products.length === 0">
       <EmptyState message="Каталог товаров пуст" />
     </div>
-    <div v-else class="">
-      <div class="grid grid-cols-4 gap-8 pt-5">
+    <div v-else>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 pt-5">
         <ProductCard
           v-for="product in products"
           :key="product.id"
