@@ -6,6 +6,7 @@ import { useRouter } from "vue-router";
 import { useToastStore } from "@/stores/toast.js"
 import EmptyState from "@/components/EmptyState.vue";
 import CartItem from "@/components/CartItem.vue";
+import BaseButton from "@/components/BaseButton.vue";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
@@ -81,11 +82,11 @@ onMounted(() => {
           <h2 class="text-xl font-semibold">Итого: <span class="text-2xl font-bold">{{ cartStore.totalSum }}</span></h2>
         </div>
         <div class="flex pb-4 px-4" v-if="cartStore.groupItems.length > 0">
-          <button
-            class="bg-blue-600 px-6 py-3 font-semibold rounded-lg hover:bg-blue-500 transition-colors duration-200 cursor-pointer"
+          <BaseButton
+            class="px-6"
             @click="makeOrder()">
             Сделать заказ
-          </button>
+          </BaseButton>
         </div>
       </div>
     </aside>

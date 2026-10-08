@@ -4,6 +4,7 @@ import { useCartStore } from "@/stores/cart.js";
 import { useAuthStore } from "@/stores/auth.js";
 import { storeToRefs } from "pinia";
 import { useToastStore } from "@/stores/toast.js"
+import BaseButton from "@/components/BaseButton.vue";
 
 const props = defineProps({
   product: {
@@ -44,14 +45,17 @@ const image_base_url = import.meta.env.VITE_IMAGE_BASE_URL;
     <h3 class="text-center">{{ product.name }}</h3>
     <p class="text-zinc-400 w-full sm:w-60 h-auto line-clamp-3 text-center">{{ product.description }}</p>
     <p>Цена: {{ product.price }} &#8381;</p>
-    <button
-      class="bg-blue-600 hover:bg-blue-400 disabled:hover:bg-blue-600 w-full sm:w-50 h-10 rounded cursor-pointer mt-5 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-      @click="addToCart(product.id)"
-      v-show="isAuthenticated"
-      :disabled="isAddedToCart">{{ !isAddedToCart ? "Добавить в корзину" : "В корзине" }}
-    </button>
-  </article>
 
+    <BaseButton
+      class="w-full sm:w-50 mt-5 disabled:hover:bg-blue-600"
+      variant="primary"
+      @click="addToCart(product.id)"
+      :disabled="isAddedToCart"
+      v-show="isAuthenticated"
+    >
+      {{ !isAddedToCart ? "Добавить в корзину" : "В корзине" }}
+    </BaseButton>
+  </article>
 </template>
 
 <style scoped>

@@ -1,9 +1,10 @@
 <script setup>
 import { useAuthStore } from "@/stores/auth.js";
+import { useToastStore } from "@/stores/toast.js";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
 import AppToast from "@/components/AppToast.vue"
-import { useToastStore } from "@/stores/toast.js";
+import BaseButton from "@/components/BaseButton.vue";
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -42,10 +43,12 @@ const logoutAction = async () => {
         <RouterLink class="text-zinc-200 hover:text-zinc-400 transition-colors duration-200"
                     :to="{name:'Orders'}"
                     v-show="isAuthenticated">Заказы</RouterLink>
-        <button
-          class="bg-blue-600 hover:bg-blue-500 px-3 sm:px-5 h-9 sm:h-10 rounded-2xl cursor-pointer transition-colors duration-200 text-sm sm:text-base"
+        <BaseButton
+          class="px-3 sm:px-5 h-9 sm:h-10 rounded-2xl text-sm sm:text-base"
           @click="logoutAction()"
-          v-show="isAuthenticated">Выйти</button>
+          v-show="isAuthenticated">
+            Выйти
+        </BaseButton>
       </nav>
     </div>
   </header>
