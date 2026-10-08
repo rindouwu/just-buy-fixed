@@ -12,10 +12,8 @@ export const useCartStore = defineStore('cart', () => {
       loading.value = true
       const response = await cart.getCart()
       items.value = response.data
-      console.log(response.data)
     } catch (error) {
       errorMessage.value = error.message
-      console.log(error)
     } finally {
       loading.value = false
     }
@@ -61,7 +59,6 @@ export const useCartStore = defineStore('cart', () => {
     for(let i = 0; i < groupItems.value.length; i++) {
       total += groupItems.value[i].quantity*groupItems.value[i].price
     }
-    console.log(total)
     return total
   })
 
