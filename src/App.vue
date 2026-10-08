@@ -15,7 +15,7 @@ const logoutAction = async () => {
   try {
     await authStore.logout();
     toastStore.showToast("Выход из аккаунта", "success");
-    router.push('/login')
+    router.push('/')
   } catch {
     toastStore.showToast("Ошибка выхода", "error")
   }
@@ -24,11 +24,12 @@ const logoutAction = async () => {
 
 <template>
   <header class="bg-zinc-800">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-20 text-zinc-100">
-      <RouterLink :to="{name:'Catalog'}">
-        <span class="hover:text-zinc-300 transition-colors duration-200">Просто купить</span>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20 text-zinc-100">
+      <RouterLink :to="{name:'Catalog'}" class="font-semibold shrink-0 hover:text-zinc-300 transition-colors duration-200">
+        Просто купить
       </RouterLink>
-      <div class="flex items-center gap-6">
+
+      <nav class="flex items-center gap-3 sm:gap-6 text-sm sm:text-base">
         <RouterLink class="text-zinc-200 hover:text-zinc-400 transition-colors duration-200"
                     :to="{name:'Login'}"
                     v-show="!isAuthenticated">Войти</RouterLink>
@@ -42,10 +43,10 @@ const logoutAction = async () => {
                     :to="{name:'Orders'}"
                     v-show="isAuthenticated">Заказы</RouterLink>
         <button
-          class="bg-blue-600 hover:bg-blue-500 w-30 h-10 rounded-2xl cursor-pointer transition-colors duration-200"
+          class="bg-blue-600 hover:bg-blue-500 px-3 sm:px-5 h-9 sm:h-10 rounded-2xl cursor-pointer transition-colors duration-200 text-sm sm:text-base"
           @click="logoutAction()"
           v-show="isAuthenticated">Выйти</button>
-      </div>
+      </nav>
     </div>
   </header>
 
