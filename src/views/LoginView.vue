@@ -18,8 +18,8 @@ const isSubmitting = ref(false)
 const errorMessage = ref('')
 
 const handleSubmit = async () => {
-  if(form.email !== "" && form.password !== "" && form.password.length < 6) {
-    errorMessage.value = "Password must be at least 6 characters"
+  if(!form.email || !form.password) {
+    errorMessage.value = "Заполните все поля"
     return
   }
   isSubmitting.value = true
@@ -42,34 +42,48 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-  <section class="text-zinc-200 h-screen max-w-7xl mx-auto pt-5 flex flex-col items-center">
-    <h1 class="mb-8 text-center text-4xl text-zinc-200">Вход в аккаунт</h1>
+  <section class="text-zinc-200 min-h-screen max-w-7xl mx-auto pt-5 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+    <h1 class="mb-8 text-center text-3xl sm:text-4xl text-zinc-200">Вход в аккаунт</h1>
     <form
-      class="flex flex-col items-center justify-center w-full max-w-md rounded-xl bg-zinc-900 p-8"
+      class="flex flex-col w-full max-w-md rounded-xl bg-zinc-900 p-6 sm:p-8"
       @submit.prevent="handleSubmit"
     >
-      <label class="font-medium text-zinc-300">Email</label>
+      <label for="login-email" class="font-medium text-zinc-300">Email</label>
       <input
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        id="login-email"
+        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
+        :class="errorMessage
+          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
         v-model="form.email"
         type="email"
         placeholder="example@mail.com"
       >
-      <label class="font-medium text-zinc-300">Password</label>
+      <label for="login-password" class="font-medium text-zinc-300">Password</label>
       <input
-        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+        id="login-password"
+        class="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1"
+        :class="errorMessage
+          ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+          : 'border-zinc-500 focus:border-blue-500 focus:ring-blue-500'"
         v-model="form.password"
         type="password"
         placeholder="password"
       >
       <p class="text-red-400 text-sm" v-if="errorMessage">{{ errorMessage }}</p>
       <button
-        class="bg-blue-600 mt-10 mt-5 px-6 py-2 font-semibold rounded-xl hover:bg-blue-500 transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+        class="bg-blue-600 mt-8 px-6 py-2 font-semibold rounded-xl hover:bg-blue-500 transition-colors duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         type="submit"
         :disabled="isSubmitting"
       >
-        Войти
+        {{ isSubmitting ? 'Вход...' : 'Войти' }}
       </button>
+      <RouterLink
+        to="/"
+        class="mt-4 self-center text-sm text-zinc-400 hover:text-zinc-200 transition-colors duration-200"
+      >
+        Назад в каталог
+      </RouterLink>
     </form>
   </section>
 </template>
