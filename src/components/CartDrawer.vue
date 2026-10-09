@@ -4,7 +4,7 @@ import {useOrderStore} from "@/stores/order.js";
 import {onMounted} from "vue";
 import { useRouter } from "vue-router";
 import { useToastStore } from "@/stores/toast.js"
-import EmptyState from "@/components/EmptyState.vue";
+import BaseEmptyState from "@/components/BaseEmptyState.vue";
 import CartItem from "@/components/CartItem.vue";
 import BaseButton from "@/components/BaseButton.vue";
 
@@ -58,7 +58,7 @@ onMounted(() => {
           v-if="cartStore.groupItems.length === 0"
           class="h-full flex justify-center items-center"
         >
-          <EmptyState message="Корзина пустая" />
+          <BaseEmptyState message="Корзина пустая" />
         </div>
         <div v-else>
           <div class="mb-3 px-4"

@@ -2,7 +2,7 @@
 import { useOrderStore } from "@/stores/order.js";
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
-import EmptyState from "@/components/EmptyState.vue";
+import BaseEmptyState from "@/components/BaseEmptyState.vue";
 import BaseSkeleton from "@/components/BaseSkeleton.vue";
 import OrderCard from "@/components/OrderCard.vue";
 
@@ -30,7 +30,7 @@ onMounted(() => {
       <p class="text-red-400">{{ errorMessage }}</p>
     </div>
     <div v-else-if="groupOrderProducts.length === 0">
-      <EmptyState message="Заказов нет" />
+      <BaseEmptyState message="Заказов нет" />
     </div>
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
       <OrderCard

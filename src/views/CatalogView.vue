@@ -6,8 +6,8 @@
   import { storeToRefs } from "pinia";
   import ProductCard from "@/components/ProductCard.vue"
   import BaseSkeleton from "@/components/BaseSkeleton.vue"
-  import EmptyState from "@/components/EmptyState.vue"
-  import ErrorState from "@/components/ErrorState.vue"
+  import BaseEmptyState from "@/components/BaseEmptyState.vue"
+  import BaseErrorState from "@/components/BaseErrorState.vue"
 
   const cartStore = useCartStore()
   const authStore = useAuthStore()
@@ -50,13 +50,13 @@
       </div>
     </div>
     <div v-else-if="errorExist">
-      <ErrorState
+      <BaseErrorState
         :error="errorMessage"
         @retry="fetchProducts"
       />
     </div>
     <div v-else-if="products.length === 0">
-      <EmptyState message="Каталог товаров пуст" />
+      <BaseEmptyState message="Каталог товаров пуст" />
     </div>
     <div v-else>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 pt-5">
