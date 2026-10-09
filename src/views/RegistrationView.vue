@@ -3,8 +3,8 @@ import {ref, reactive, computed} from 'vue';
 import { useRouter } from 'vue-router';
 import useAuth from "@/services/authService.js";
 import { useToastStore } from "@/stores/toast.js"
-import BaseButton from "@/components/BaseButton.vue";
-import BaseInput from "@/components/BaseInput.vue"
+import BaseButton from "@/components/ui/BaseButton.vue";
+import BaseInput from "@/components/ui/BaseInput.vue"
 
 const form = reactive({
   fio: "",

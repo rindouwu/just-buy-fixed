@@ -3,8 +3,8 @@ import { useAuthStore } from "@/stores/auth.js";
 import { useToastStore } from "@/stores/toast.js";
 import { useRouter } from "vue-router";
 import { storeToRefs } from "pinia";
-import AppToast from "@/components/AppToast.vue"
-import BaseButton from "@/components/BaseButton.vue";
+import AppToast from "@/components/layout/AppToast.vue"
+import BaseButton from "@/components/ui/BaseButton.vue";
 
 const authStore = useAuthStore();
 const router = useRouter();

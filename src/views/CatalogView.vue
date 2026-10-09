@@ -4,10 +4,10 @@
   import { useCartStore } from "@/stores/cart.js"
   import { useAuthStore } from "@/stores/auth.js";
   import { storeToRefs } from "pinia";
-  import ProductCard from "@/components/ProductCard.vue"
-  import BaseSkeleton from "@/components/BaseSkeleton.vue"
-  import BaseEmptyState from "@/components/BaseEmptyState.vue"
-  import BaseErrorState from "@/components/BaseErrorState.vue"
+  import ProductCard from "@/components/catalog/ProductCard.vue"
+  import BaseSkeleton from "@/components/ui/BaseSkeleton.vue"
+  import BaseEmptyState from "@/components/ui/BaseEmptyState.vue"
+  import BaseErrorState from "@/components/ui/BaseErrorState.vue"
 
   const cartStore = useCartStore()
   const authStore = useAuthStore()

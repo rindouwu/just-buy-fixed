@@ -2,9 +2,9 @@
 import { useOrderStore } from "@/stores/order.js";
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
-import BaseEmptyState from "@/components/BaseEmptyState.vue";
-import BaseSkeleton from "@/components/BaseSkeleton.vue";
-import OrderCard from "@/components/OrderCard.vue";
+import BaseEmptyState from "@/components/ui/BaseEmptyState.vue";
+import BaseSkeleton from "@/components/ui/BaseSkeleton.vue";
+import OrderCard from "@/components/orders/OrderCard.vue";
 
 const orderStore = useOrderStore();
 

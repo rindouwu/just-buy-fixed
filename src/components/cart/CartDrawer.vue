@@ -4,9 +4,9 @@ import {useOrderStore} from "@/stores/order.js";
 import {onMounted} from "vue";
 import { useRouter } from "vue-router";
 import { useToastStore } from "@/stores/toast.js"
-import BaseEmptyState from "@/components/BaseEmptyState.vue";
-import CartItem from "@/components/CartItem.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import BaseEmptyState from "@/components/ui/BaseEmptyState.vue";
+import CartItem from "@/components/cart/CartItem.vue";
+import BaseButton from "@/components/ui/BaseButton.vue";
 
 const cartStore = useCartStore();
 const orderStore = useOrderStore();

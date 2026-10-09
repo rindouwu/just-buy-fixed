@@ -4,7 +4,7 @@ import { useCartStore } from "@/stores/cart.js";
 import { useAuthStore } from "@/stores/auth.js";
 import { storeToRefs } from "pinia";
 import { useToastStore } from "@/stores/toast.js"
-import BaseButton from "@/components/BaseButton.vue";
+import BaseButton from "@/components/ui/BaseButton.vue";
 
 const props = defineProps({
   product: {
