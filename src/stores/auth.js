@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import auth from "@/services/auth.js"
+import auth from "@/services/authService.js"
 
 export const useAuthStore = defineStore('auth', () => {
   const token = ref(localStorage.getItem('user_token'));

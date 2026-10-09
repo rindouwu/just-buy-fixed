@@ -2,7 +2,7 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from "vue-router"
 import { useAuthStore } from "@/stores/auth.js"
-import authService from "@/services/auth.js"
+import authService from "@/services/authService.js"
 import { useToastStore } from "@/stores/toast.js"
 import BaseButton from "@/components/BaseButton.vue";
 import BaseInput from "@/components/BaseInput.vue";
